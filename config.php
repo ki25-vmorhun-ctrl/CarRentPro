@@ -6,8 +6,8 @@
 // MySQL сервер (для XAMPP завжди 127.0.0.1)
 define('DB_HOST', '127.0.0.1');
 
-// Порт MySQL (3306 стандарт, але інколи 3307)
-define('DB_PORT', '3307');
+// Порт MySQL (3306)
+define('DB_PORT', '3306');
 
 // Назва бази даних (ВАЖЛИВО: має 100% співпадати з phpMyAdmin)
 define('DB_NAME', 'carrentpro');
