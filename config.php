@@ -1,19 +1,21 @@
 <?php
 // =====================================
-// CarRent Pro - конфігурація бази даних
+// CarRent Pro
+// Конфігурація
 // =====================================
 
-// MySQL сервер (для XAMPP завжди 127.0.0.1)
+// ---------- Database ----------
+
 define('DB_HOST', '127.0.0.1');
-
-// Порт MySQL (3306)
 define('DB_PORT', '3306');
-
-// Назва бази даних (ВАЖЛИВО: має 100% співпадати з phpMyAdmin)
 define('DB_NAME', 'carrentpro');
-
-// Користувач MySQL
 define('DB_USER', 'root');
-
-// Пароль (у XAMPP зазвичай порожній)
 define('DB_PASS', '');
+
+// ---------- Website ----------
+
+define('SITE_NAME', 'CarRent Pro');
+
+define('BASE_URL', '/CarRentPro/');
+
+define('DEFAULT_LANG', 'uk');
