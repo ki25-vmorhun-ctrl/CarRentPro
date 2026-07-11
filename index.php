@@ -211,4 +211,92 @@ style="font-size:60px;"></i>
 
 </section>
 
+<!-- ================= REVIEWS ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+            <h2>Відгуки наших клієнтів</h2>
+            <p>Що говорять про нас люди</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card h-100 shadow border-0">
+
+                    <div class="card-body">
+
+                        <h5>⭐⭐⭐⭐⭐</h5>
+
+                        <p>
+                            "Дуже швидке бронювання. Автомобіль був у
+                            відмінному стані. Рекомендую!"
+                        </p>
+
+                        <h6 class="mt-4 mb-0">
+                            — Олександр
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card h-100 shadow border-0">
+
+                    <div class="card-body">
+
+                        <h5>⭐⭐⭐⭐⭐</h5>
+
+                        <p>
+                            "Все чесно, без прихованих платежів.
+                            Дуже привітний персонал."
+                        </p>
+
+                        <h6 class="mt-4 mb-0">
+                            — Ірина
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card h-100 shadow border-0">
+
+                    <div class="card-body">
+
+                        <h5>⭐⭐⭐⭐⭐</h5>
+
+                        <p>
+                            "Орендував BMW на вихідні.
+                            Все пройшло чудово, обов'язково звернусь ще."
+                        </p>
+
+                        <h6 class="mt-4 mb-0">
+                            — Владислав
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 <?php include 'includes/footer.php'; ?>
