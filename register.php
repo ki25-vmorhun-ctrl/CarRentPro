@@ -6,11 +6,19 @@ $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $name = trim($_POST['name']);
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    if (empty($name) || empty($email) || empty($password)) {
+    if (
+    empty($first_name) ||
+    empty($last_name) ||
+    empty($email) ||
+    empty($password)
+       ) 
+
+    {
         $error = "Заповніть всі поля!";
     } else {
 
@@ -27,8 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             // вставка
-            $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-            $stmt->execute([$name, $email, $hash]);
+            $stmt = $pdo->prepare("
+    INSERT INTO users
+    (first_name, last_name, email, password)
+    VALUES (?, ?, ?, ?)
+");
+
+$stmt->execute([
+    $first_name,
+    $last_name,
+    $email,
+    $hash
+]);
 
             header("Location: login.php");
             exit();
@@ -57,9 +75,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <form method="POST">
 
                         <div class="mb-3">
-                            <label>Ім'я</label>
-                            <input type="text" name="name" class="form-control" required>
-                        </div>
+                            <div class="mb-3">
+
+    <label>Ім'я</label>
+
+    <input
+        type="text"
+        name="first_name"
+        class="form-control"
+        required>
+
+</div>
+
+<div class="mb-3">
+
+    <label>Прізвище</label>
+
+    <input
+        type="text"
+        name="last_name"
+        class="form-control"
+        required>
+
+</div>
 
                         <div class="mb-3">
                             <label>Email</label>

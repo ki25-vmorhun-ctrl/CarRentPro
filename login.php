@@ -14,41 +14,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    // 🔐 перевірка пароля
-    if ($user && password_verify($password, $user['password'])) {
+   // 🔐 перевірка пароля
+if ($user && password_verify($password, $user['password'])) {
 
-        // 💾 СЕСІЯ (ВАЖЛИВО)
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role']; // 🔥 ОЦЕ БУЛО ВІДСУТНЄ
+    // 💾 створюємо сесію
+    $_SESSION['user_id'] = $user['id'];
 
-        // 🚗 редірект по ролі
-        if (isset($_SESSION['redirect_after_login'])) {
+    // Якщо користувача перекинуло сюди зі сторінки бронювання
+    if (isset($_SESSION['redirect_after_login'])) {
 
-    $redirect = $_SESSION['redirect_after_login'];
+        $redirect = $_SESSION['redirect_after_login'];
 
-    unset($_SESSION['redirect_after_login']);
+        unset($_SESSION['redirect_after_login']);
 
-    header("Location: " . $redirect);
+        header("Location: " . $redirect);
 
+        exit();
+
+    }
+
+    // Звичайний вхід
+    header("Location: profile.php");
     exit();
-
-}
-
-if ($user['role'] === 'admin') {
-
-    header("Location: admin.php");
 
 } else {
 
-    header("Location: profile.php");
+    $error = "Невірний email або пароль!";
 
 }
-
-exit();
-
-    } else {
-        $error = "Невірний email або пароль!";
-    }
 }
 ?>
 
