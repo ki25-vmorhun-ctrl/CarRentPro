@@ -54,13 +54,13 @@ if (!isset($_SESSION['user_id'])) {
 }
         // 🚨 АНТИ-ДВІЙНЕ БРОНЮВАННЯ
         $check = $pdo->prepare("
-            SELECT id FROM bookings
-            WHERE car_id = ?
-            AND status = 'confirmed'
-            AND (
-                (start_date <= ? AND end_date >= ?)
-            )
-        ");
+    SELECT id FROM bookings
+    WHERE car_id = ?
+    AND status = 'Confirmed'
+    AND (
+        (date_from <= ? AND date_to >= ?)
+    )
+");
 
         $check->execute([$car_id, $end_date, $start_date]);
 
@@ -72,10 +72,10 @@ if (!isset($_SESSION['user_id'])) {
 
             // ✔ вставка бронювання + ЦІНА
             $stmt = $pdo->prepare("
-                INSERT INTO bookings (user_id, car_id, start_date, end_date, status, total_price)
-                VALUES (?, ?, ?, ?, 'pending', ?)
-            ");
-
+                IINSERT INTO bookings
+(user_id, car_id, date_from, date_to, status, total_price)
+VALUES (?, ?, ?, ?, 'Pending', ?)
+");
             $stmt->execute([
                 $user_id,
                 $car_id,

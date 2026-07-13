@@ -26,7 +26,7 @@ $stmt = $pdo->prepare("
         cars.brand,
         cars.model,
         cars.image,
-        cars.price_per_day
+        cars.price
     FROM bookings
     JOIN cars ON bookings.car_id = cars.id
     WHERE bookings.user_id = ?
@@ -46,7 +46,9 @@ $bookings = $stmt->fetchAll();
     <!-- 👤 INFO -->
     <div class="card shadow p-4 mb-4">
 
-        <p><b>Ім'я:</b> <?= htmlspecialchars($user['name']) ?></p>
+        <p><b>Ім'я:</b>
+<?= htmlspecialchars($user['first_name'] . ' ' . $user['last_name']) ?>
+</p>
         <p><b>Email:</b> <?= htmlspecialchars($user['email']) ?></p>
 
         <a href="logout.php" class="btn btn-danger mt-3">
@@ -84,9 +86,14 @@ $bookings = $stmt->fetchAll();
                             <?= htmlspecialchars($b['brand'] . ' ' . $b['model']) ?>
                         </h5>
 
+<p>
+    <b>Вартість:</b>
+    $<?= number_format($b['total_price'], 2) ?>
+</p>
+
                         <p>
-                            <b>З:</b> <?= $b['start_date'] ?><br>
-                            <b>По:</b> <?= $b['end_date'] ?>
+                            <b>З:</b> <?= $b['date_from'] ?><br>
+                            <b>По:</b> <?= $b['date_to'] ?>
                         </p>
 
                         <p>
