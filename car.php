@@ -164,7 +164,57 @@ if (!$car) {
             <a href="add_favorite.php?car_id=<?= $car['id'] ?>" class="btn btn-danger w-100">
                 ❤️ Додати в улюблені
             </a>
+<hr class="my-4">
 
+<h3 class="mb-3">📅 Календар доступності</h3>
+
+<div class="card shadow-sm p-3 mb-4">
+
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Пн</th>
+                <th>Вт</th>
+                <th>Ср</th>
+                <th>Чт</th>
+                <th>Пт</th>
+                <th>Сб</th>
+                <th>Нд</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td class="table-success">2</td>
+                <td class="table-success">3</td>
+                <td class="table-danger">4</td>
+                <td class="table-danger">5</td>
+                <td class="table-success">6</td>
+            </tr>
+
+            <tr>
+                <td class="table-success">7</td>
+                <td class="table-success">8</td>
+                <td class="table-danger">9</td>
+                <td class="table-danger">10</td>
+                <td class="table-success">11</td>
+                <td class="table-success">12</td>
+                <td class="table-success">13</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="mt-2">
+        <span class="badge bg-success">Доступно</span>
+        <span class="badge bg-danger ms-3">Заброньовано</span>
+    </div>
+
+</div>
         </div>
 
     </div>
