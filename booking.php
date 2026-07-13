@@ -25,7 +25,7 @@ if (!$car) {
 }
 
 // 💰 ціна за день
-$price_per_day = $car['price_per_day'];
+$price_per_day = $car['price'];
 
 // 🔥 обробка форми
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -107,8 +107,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <label>Дата з</label>
         <input type="date" name="start_date" class="form-control" required>
 
+<label class="mt-2">Час отримання</label>
+
+<input
+type="time"
+name="start_time"
+class="form-control"
+value="10:00"
+required>
+
         <label class="mt-2">Дата по</label>
         <input type="date" name="end_date" class="form-control" required>
+
+<label class="mt-2">Час повернення</label>
+
+<input
+type="time"
+name="end_time"
+class="form-control"
+value="10:00"
+required>
+
+<div class="form-check mt-3">
+
+    <input
+        class="form-check-input"
+        type="checkbox"
+        id="childSeat"
+        name="child_seat">
+
+    <label
+        class="form-check-label"
+        for="childSeat">
+
+        👶 Дитяче крісло (+10 $ / доба)
+
+    </label>
+
+</div>
 
         <hr>
 
