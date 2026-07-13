@@ -22,13 +22,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = $user['role']; // 🔥 ОЦЕ БУЛО ВІДСУТНЄ
 
         // 🚗 редірект по ролі
-        if ($user['role'] === 'admin') {
-            header("Location: admin.php");
-        } else {
-            header("Location: profile.php");
-        }
+        if (isset($_SESSION['redirect_after_login'])) {
 
-        exit();
+    $redirect = $_SESSION['redirect_after_login'];
+
+    unset($_SESSION['redirect_after_login']);
+
+    header("Location: " . $redirect);
+
+    exit();
+
+}
+
+if ($user['role'] === 'admin') {
+
+    header("Location: admin.php");
+
+} else {
+
+    header("Location: profile.php");
+
+}
+
+exit();
 
     } else {
         $error = "Невірний email або пароль!";

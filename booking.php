@@ -2,11 +2,6 @@
 session_start();
 require_once __DIR__ . '/includes/db.php';
 
-// 🔐 перевірка логіну
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
 
 // 🚗 перевірка car_id
 if (!isset($_GET['car_id'])) {
@@ -30,7 +25,16 @@ $price_per_day = $car['price'];
 // 🔥 обробка форми
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $user_id = $_SESSION['user_id'];
+// Якщо користувач не авторизований — просимо увійти
+if (!isset($_SESSION['user_id'])) {
+
+    $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+
+    header("Location: login.php");
+
+    exit();
+}
+    $user_id = $_SESSION['user_id'] ?? 1;
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
     $childSeat = isset($_POST['child_seat']);
