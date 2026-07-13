@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user_id = $_SESSION['user_id'];
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
+    $childSeat = isset($_POST['child_seat']);
 
     // 📅 кількість днів
     $days = (strtotime($end_date) - strtotime($start_date)) / 86400;
@@ -42,7 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
 
         $total_price = $days * $price_per_day;
+        if($childSeat){
 
+         $total_price += $days * 10;
+
+}
         // 🚨 АНТИ-ДВІЙНЕ БРОНЮВАННЯ
         $check = $pdo->prepare("
             SELECT id FROM bookings
@@ -195,11 +200,23 @@ function calculate() {
     }
 
     daysEl.textContent = diff;
-    totalEl.textContent = diff * pricePerDay;
+    let total = diff * pricePerDay;
+
+if(document.getElementById('childSeat').checked){
+
+    total += diff * 10;
+
+}
+
+totalEl.textContent = total;
 }
 
 startInput.addEventListener('change', calculate);
 endInput.addEventListener('change', calculate);
+document
+.getElementById('childSeat')
+.addEventListener('change', calculate);
+
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
