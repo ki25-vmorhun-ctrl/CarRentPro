@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_id'])) {
 
             // ✔ вставка бронювання + ЦІНА
             $stmt = $pdo->prepare("
-                IINSERT INTO bookings
+                INSERT INTO bookings
 (user_id, car_id, date_from, date_to, status, total_price)
 VALUES (?, ?, ?, ?, 'Pending', ?)
 ");
